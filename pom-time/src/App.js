@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react"
 
 import "./App.css"
+import TimeTracker from "./functions/tracking/TimeTracker"
 
 const App = () => {
 	const [timer, setTimer] = useState(1500)
@@ -46,6 +47,7 @@ const App = () => {
 	return (
 		<div className="app">
 			<h3>Pomodoro Timer</h3>
+			<TimeTracker />
 			<div className="stopwatch-card">
 				<p>{formatTime()}</p>
 				<div className="buttons">
