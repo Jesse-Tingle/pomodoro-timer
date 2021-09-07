@@ -4,7 +4,7 @@ import "./App.css"
 import TimeTracker from "./functions/tracking/TimeTracker"
 
 const App = () => {
-	const [timer, setTimer] = useState(1500)
+	const [timer, setTimer] = useState(10)
 	const [isActive, setIsActive] = useState(false)
 	const [isPaused, setIsPaused] = useState(false)
 	const increment = useRef(null)
@@ -33,7 +33,7 @@ const App = () => {
 		clearInterval(increment.current)
 		setIsActive(false)
 		setIsPaused(false)
-		setTimer(1500)
+		setTimer(10)
 	}
 
 	const formatTime = () => {
