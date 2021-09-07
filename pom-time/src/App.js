@@ -5,13 +5,13 @@ import TimeTracker from "./functions/tracking/TimeTracker"
 
 const App = () => {
 	const [timer, setTimer] = useState(10)
-	// const [isActive, setIsActive] = useState(false)
-	// const [isPaused, setIsPaused] = useState(false)
+	const [isActive, setIsActive] = useState(false)
+	const [isPaused, setIsPaused] = useState(false)
 	const increment = useRef(null)
 
 	const handleStart = () => {
-		// setIsActive(true)
-		// setIsPaused(true)
+		setIsActive(true)
+		setIsPaused(true)
 		increment.current = setInterval(() => {
 			setTimer((timer) => timer - 1)
 		}, 1000)
@@ -19,11 +19,11 @@ const App = () => {
 
 	const handlePause = () => {
 		clearInterval(increment.current)
-		// setIsPaused(false)
+		setIsPaused(false)
 	}
 
 	const handleResume = () => {
-		// setIsPaused(true)
+		setIsPaused(true)
 		increment.current = setInterval(() => {
 			setTimer((timer) => timer - 1)
 		}, 1000)
@@ -31,8 +31,8 @@ const App = () => {
 
 	const handleReset = () => {
 		clearInterval(increment.current)
-		// setIsActive(false)
-		// setIsPaused(false)
+		setIsActive(false)
+		setIsPaused(false)
 		setTimer(10)
 	}
 
@@ -51,13 +51,16 @@ const App = () => {
 			<div className="stopwatch-card">
 				<p>{formatTime()}</p>
 				<div className="buttons">
-					<button onClick={handleStart}>Start</button>
-
-					<button onClick={handlePause}>Pause</button>
-
-					<button onClick={handleResume}>Resume</button>
-
-					<button onClick={handleReset}>Reset</button>
+					{!isActive && !isPaused ? (
+						<button onClick={handleStart}>Start</button>
+					) : isPaused ? (
+						<button onClick={handlePause}>Pause</button>
+					) : (
+						<button onClick={handleResume}>Resume</button>
+					)}
+					<button onClick={handleReset} disabled={!isActive}>
+						Reset
+					</button>
 				</div>
 			</div>
 		</div>
