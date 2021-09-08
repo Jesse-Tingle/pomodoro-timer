@@ -1,9 +1,14 @@
 import React from "react"
 
-function App() {
+import "./App.css"
+import SetPomodoro from "./components/SetPomodoro"
+
+const App = () => {
 	return (
-		<div className="app">
-			<h1>Pomodoro Timer</h1>
+		<div className="container">
+			<h1>Pomodoro</h1>
+			<small>Be productive the right way.</small>
+			<SetPomodoro />
 		</div>
 	)
 }
