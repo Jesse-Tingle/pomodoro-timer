@@ -25,10 +25,10 @@ function SettingsContextProvider(props) {
 	}
 	// pass time to counter
 	const children = ({ remainingTime }) => {
-		const minutes = Math.floor(remainingTime / 60)
-		const seconds = remainingTime % 60
-
-		return `${minutes}:${seconds}`
+		const getSeconds = `0${remainingTime % 60}`.slice(-2)
+		const minutes = `${Math.floor(remainingTime / 60)}`
+		const getMinutes = `0${minutes % 60}`.slice(-2)
+		return `${getMinutes} : ${getSeconds}`
 	}
 
 	// clear session storage
